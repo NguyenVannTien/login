@@ -3,6 +3,7 @@ import LeftSide from '../../components/LeftSide/LeftSide';
 import LoginSide from '../../components/LoginSide/LoginSide';
 import './style.scss';
 
+
 const Login = () => {
   return (
     <div className='login'>

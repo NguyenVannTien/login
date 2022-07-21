@@ -1,9 +1,13 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
+import Input from '../Input/Input';
 import './style.scss';
 
 const LoginSide = () => {
+
+  const [check, setCheck] = useState(false)
+
   return (
     <div className="container">
       <div className="login--side">
@@ -13,18 +17,34 @@ const LoginSide = () => {
         </div>
         <div className='login--side__tabs'>
           <div className='login--side__tabs__btn'>
-            <button className='login--side__tabs__btn--email'>Email</button>
-            <button className='login--side__tabs__btn--phone'>Phone</button>
+            <button className={ check ? 'login--side__tabs__btn--email' : 
+              'login--side__tabs__btn--email active '}
+              onClick={() => setCheck(false)}
+            >
+              Email
+            </button>
+            <button className={ check ? 'login--side__tabs__btn--phone active' : 
+              'login--side__tabs__btn--phone  '}
+              onClick={()=> setCheck(true)}
+            >
+              Phone
+            </button>
           </div>
           <div className='login--side__tabs__bar'>
+            <div  className={check ? 
+              'login--side__tabs__bar--active toggle' : 
+              'login--side__tabs__bar--active'}
+            >
+            </div>
           </div>
         </div>
         <form className='login--side__form'>
-          <label>Email Address</label>
-          <input type='email' placeholder='Enter Email Address'/>
-          <label>Password</label>
+          {check ?
+            <Input  label='Phone Number' placeholder='Enter Phone Number' type='text' /> :
+            <Input label='Email Address'  placeholder='Enter Email Address' type='text' /> 
+          }
           <div className='login--side__form__rel'>
-            <input className="login--side__pwd" type='password' />
+            <Input label='Password' className="login--side__pwd" type='password' />
             <i class="login--side__form__rel--hide fa-solid fa-eye"></i>
             <i class="login--side__form__rel--show fa-solid fa-eye-slash"></i>
           </div>

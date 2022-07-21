@@ -66,7 +66,6 @@
         font-size: 20px;
         line-height: 28px;
         color: #8C8C8C;
-
       }
       &--phone{
         width: 50px;
@@ -78,12 +77,25 @@
         line-height: 28px;
         color: #8C8C8C;
       }
+      .active{
+        color: #2BC7A2;
+      }
     }
     &__bar{
       width: 500px;
       height: 4px;
       background: #F2F2F2;
       margin-bottom: 32px;
+      &--active {
+        height: 4px;
+        width: 250px;
+        background: #2BC7A2;
+        transition: 0.5s;
+      }
+      .toggle{
+        transform: translateX(calc(100% + 0px));
+      }
+      
     }
   }
 
@@ -139,7 +151,7 @@
         height: 18px;
         position: absolute;
         right: 20px;
-        top: 24px;
+        top: 48px;
         font-size: 20px;
       }
       &--hide{
@@ -147,7 +159,7 @@
         height: 18px;
         position: absolute;
         right: 20px;
-        top: 24px;
+        top: 48px;
         font-size: 20px;
         display: none;
       }
