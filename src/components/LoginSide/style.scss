@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+.container{
+  width: 60%;
+  min-height: 100vh;
+  height: auto;
+}
+
+.login--side{
+  width: 70%;
+  margin: auto;
+  &__title{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & h3{
+      width: 400px;
+      height: 54px;
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 54px;
+      text-align: center;
+      color: #242330;
+    }
+    & p {
+      width: 264px;
+      height: 28px;
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+      color: #3E3D54;
+      margin-bottom: 35px;
+    }
+  }
+  &__tabs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    &__btn{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+      gap: 172px;
+      width: 500px;
+      height: 28px;
+      & button{
+        outline: none;
+        border: none;
+        background: #fff;
+      }
+      &--email{
+        width: 50px;
+        height: 28px;
+        font-family: 'Titillium Web';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        color: #8C8C8C;
+
+      }
+      &--phone{
+        width: 50px;
+        height: 28px;
+        font-family: 'Titillium Web';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        color: #8C8C8C;
+      }
+    }
+    &__bar{
+      width: 500px;
+      height: 4px;
+      background: #F2F2F2;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 6px;
+    margin-left: 145px;
+    & label {
+      width: 98px;
+      height: 24px; 
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.01em;
+      color: #202124;
+    }
+    & input{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px;
+      gap: 8px;
+      width: 500px;
+      height: 65px;
+      font-weight: 400;
+      font-size: 20px;
+      border: 1px solid #A6A6A6;
+      border-radius: 4px;
+      background: #FAFAFA;
+    }
+    & span {
+      color: #202124;
+      width: 155px;
+      height: 28px;
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+      margin-left: 350px;
+    }
+    &__rel{
+      position: relative;
+      &--show{
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        right: 20px;
+        top: 24px;
+        font-size: 20px;
+      }
+      &--hide{
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        right: 20px;
+        top: 24px;
+        font-size: 20px;
+        display: none;
+      }
+      
+    }
+    &__sign{
+      & button{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        padding: 18px 30px;
+        width: 500px;
+        height: 60px;
+        background: #2BC7A2;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+        outline: 0;
+        border: 0;
+        margin-bottom: 24px;
+      }
+      &__text{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        padding: 0px;
+        gap: 4px;
+        width: 500px;
+        height: 30px;
+        font-size: 18px;
+        & a{
+          color: #2BC7A2;
+          text-decoration-line: underline;
+        }
+      }
+    }
+  }
+}
