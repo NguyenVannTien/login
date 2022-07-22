@@ -108,7 +108,7 @@
     gap: 6px;
     margin-left: 145px;
     & label {
-      width: 98px;
+      min-width: 98px;
       height: 24px; 
       font-family: 'Titillium Web';
       font-style: normal;
@@ -197,6 +197,27 @@
           text-decoration-line: underline;
         }
       }
+    }
+    &__phone{
+      display: inline-flex;
+      width: 500px;
+      & select{
+        width: 150px;
+        height: 65px;
+        font-weight: 400;
+        font-size: 20px;
+        border: 1px solid #A6A6A6;
+        border-radius: 4px;
+        background: #FAFAFA;
+        margin-right: 5px;
+        font-family: 'Titillium Web';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        color: #202124;
+      }
+      
     }
   }
 }
