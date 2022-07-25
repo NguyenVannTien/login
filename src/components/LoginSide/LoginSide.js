@@ -1,5 +1,6 @@
 
 
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Input/Input';
@@ -16,26 +17,40 @@ const LoginSide = () => {
   const navigate = useNavigate();
   
   useEffect( () => {
-    if(localStorage.getItem('login-info')){
-    }
+    
   },[])
 
   const handleLoginForm = async (e) =>{
     e.preventDefault();
     const item = {email, password}
-    const response = await fetch('https://cadawada-api-dev.niw.com.vn/api/v1/authenticate/login', {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'ClientId': '2d4459cc-810b-40c9-86b2-414b5eb838fb',
-        'ClientKey': 'CK_TestoPT9vqdI9h67B6n3YKxd'
-      },
-      body: JSON.stringify(item),
-    });
-    const res = await response.json();
-    localStorage.setItem('login-info', JSON.stringify(res));
-    navigate('/')
+    // const response = await fetch('https://cadawada-api-dev.niw.com.vn/api/v1/authenticate/login', {
+    //   method: 'POST',
+    //   headers: { 
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //     'ClientId': '2d4459cc-810b-40c9-86b2-414b5eb838fb',
+    //     'ClientKey': 'CK_TestoPT9vqdI9h67B6n3YKxd'
+    //   },
+    //   body: JSON.stringify(item),
+    // });
+    // const res = await response.json();
+    // localStorage.setItem('login-info', JSON.stringify(res));
+    const body = {
+      userldentily: email,
+      password: password,
+      countryCide:"",
+    }
+    const headers = { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'ClientId': '2d4459cc-810b-40c9-86b2-414b5eb838fb',
+      'ClientKey': 'CK_TestoPT9vqdI9h67B6n3YKxd',
+    }
+
+    const login = await axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/authenticate/login',body, headers);
+    console.log(login.data);
+
+    // navigate('/')
   }
   
   
