@@ -3,42 +3,30 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Alert from '../Alert/Alert';
 import Input from '../Input/Input';
+
+// import { saveToken } from '../../utils/jwt';
 import './style.scss';
+
+
 // import onLogin from '../../pages/auth/api';
 
 const LoginSide = () => {
 
   const [check, setCheck] = useState(false);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [type, setType]= useState('password');
   const navigate = useNavigate();
-  
-  useEffect( () => {
-    
-  },[])
 
-  const handleLoginForm = async (e) =>{
+ 
+  const handleLoginForm =  (e) =>{
     e.preventDefault();
-    const item = {email, password}
-    // const response = await fetch('https://cadawada-api-dev.niw.com.vn/api/v1/authenticate/login', {
-    //   method: 'POST',
-    //   headers: { 
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json',
-    //     'ClientId': '2d4459cc-810b-40c9-86b2-414b5eb838fb',
-    //     'ClientKey': 'CK_TestoPT9vqdI9h67B6n3YKxd'
-    //   },
-    //   body: JSON.stringify(item),
-    // });
-    // const res = await response.json();
-    // localStorage.setItem('login-info', JSON.stringify(res));
     const body = {
-      userldentily: email,
+      userIdentity: email,
       password: password,
-      countryCide:"",
+      countryCode:"",
     }
     const headers = { 
       'Content-Type': 'application/json',
@@ -47,15 +35,22 @@ const LoginSide = () => {
       'ClientKey': 'CK_TestoPT9vqdI9h67B6n3YKxd',
     }
 
-    const login = await axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/authenticate/login',body, headers);
-    console.log(login.data);
-
-    // navigate('/')
+    axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/authenticate/login',body, {headers})
+    .then((res) => {
+      if(res && res.data.data.login.token.accessToken) {
+        localStorage.setItem('loginToken', JSON.stringify(res.data.data.login.token.accessToken))
+        navigate('/')
+      }
+    })
+    .catch(() =>{
+      alert('loiiii!!!!')
+    })
   }
-  
+
+   
   
   return (
-    <div className="container">
+    <div className="container-register">
       <div className="login--side">
         <div className="login--side__title">
           <h3>Sign In to Candawada</h3>
@@ -106,12 +101,17 @@ const LoginSide = () => {
             /> 
           }
           <div className='login--side__form__rel'>
-            <Input label='Password' className="login--side__pwd" type='password' 
+            <Input label='Password' className="login--side__pwd" type={type}
               value={password}
               onChange={(event) => setPassword(event.target.value)} 
             />
-            <i className="login--side__form__rel--hide fa-solid fa-eye"></i>
-            <i className="login--side__form__rel--show fa-solid fa-eye-slash"></i>
+            <i className="login--side__form__rel--hide fa-solid fa-eye"
+            >
+            </i>
+            <i className="login--side__form__rel--show fa-solid fa-eye-slash"
+              onClick={() => setType('text')}
+            >
+            </i>
           </div>
           <span>Forgot Password?</span>
           <div className='login--side__form__sign'> 

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const Input = ( {label,...props}) => {
+const Input = ( {label, ...props}) => {
   return (
     <>
       <label>{label}</label>
