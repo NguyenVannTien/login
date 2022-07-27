@@ -3,7 +3,7 @@ import imagePath from '../../assets/image/Path 1972.png';
 import imageIsometric from '../../assets/image/isometric illustrations.png';
 import './style.scss';
 
-const LeftRigister = () => {
+const LeftRegister = () => {
   return (
     <div className="left-register">
       <div className='left-register__img'>
@@ -54,4 +54,4 @@ const LeftRigister = () => {
   )
 }
 
-export default LeftRigister;
+export default LeftRegister;
