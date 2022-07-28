@@ -56,10 +56,10 @@ const RightRigister = () => {
     console.log(selectCountry[0].shortCode);
     const data = {
       ...values,
-      countryCode: selectCountry[0].shortCode
+      countryCode: selectCountry
     }
-    localStorage.setItem('dataSingUp', JSON.stringify(data))
-    if(localStorage.getItem('dataSingUp')){
+    localStorage.setItem('dataSignUp', JSON.stringify(data))
+    if(localStorage.getItem('dataSignUp')){
       navigate('/register/confirm-email')
     }
   }
