@@ -104,7 +104,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 0px;
     gap: 6px;
     margin-left: 145px;
     & label {
@@ -160,7 +159,6 @@
         right: 20px;
         top: 48px;
         font-size: 20px;
-        display: none;
       }
       
     }
@@ -194,6 +192,9 @@
         & a{
           color: #2BC7A2;
           text-decoration-line: underline;
+        }
+        & p{
+          margin: 0;
         }
       }
     }

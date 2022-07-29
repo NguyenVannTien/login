@@ -1,16 +1,10 @@
 
 
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Alert from '../Alert/Alert';
 import Input from '../Input/Input';
-
-// import { saveToken } from '../../utils/jwt';
 import './style.scss';
-
-
-// import onLogin from '../../pages/auth/api';
 
 const LoginSide = () => {
 
@@ -105,13 +99,18 @@ const LoginSide = () => {
               value={password}
               onChange={(event) => setPassword(event.target.value)} 
             />
-            <i className="login--side__form__rel--hide fa-solid fa-eye"
-            >
-            </i>
-            <i className="login--side__form__rel--show fa-solid fa-eye-slash"
-              onClick={() => setType('text')}
-            >
-            </i>
+            {
+              type === 'password' &&
+              <i className="login--side__form__rel--show fa-solid fa-eye-slash"
+                onClick={() => setType('text')}
+              /> 
+            }
+            {
+              type === 'text' &&
+              <i className="login--side__form__rel--hide fa-solid fa-eye"
+                onClick={() => setType('password')}
+              />  
+            }
           </div>
           <span>Forgot Password?</span>
           <div className='login--side__form__sign'> 

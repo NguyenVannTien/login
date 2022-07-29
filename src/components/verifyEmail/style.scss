@@ -51,6 +51,12 @@
       text-align: center;
       color: #202124;
       margin-bottom: 40px;
+      & span {
+        color: #202124;
+        font-weight: 600;
+        font-family: 'Titillium Web';
+        font-size: 20px;
+      }
     }
     &__input{
       width: 60px;
@@ -74,11 +80,11 @@
       text-align: center;
       color: #787878;
       margin-bottom: 20px;
+      cursor: no-drop;
       &:hover{
         opacity: 1;
         background: #999;
         color: #565656;
-        cursor: no-drop;
       }
       
     }
@@ -86,9 +92,8 @@
       background: #2BC7A2;
       color: #fff;
       opacity: 1;
-      &:hover{
-        cursor: pointer;
-      }
+      cursor: pointer;
+      
     }
     &__resend{
       background: none;
