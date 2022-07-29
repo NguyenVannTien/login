@@ -58,7 +58,8 @@
         background: #fff;
       }
       &--email{
-        width: 50px;
+        text-align: center;
+        width: 25px;
         height: 28px;
         font-family: 'Titillium Web';
         font-style: normal;
@@ -68,6 +69,7 @@
         color: #8C8C8C;
       }
       &--phone{
+        text-align: center;
         width: 50px;
         height: 28px;
         font-family: 'Titillium Web';
@@ -82,13 +84,13 @@
       }
     }
     &__bar{
-      width: 500px;
+      width: 400px;
       height: 4px;
       background: #F2F2F2;
       margin-bottom: 32px;
       &--active {
         height: 4px;
-        width: 250px;
+        width: 200px;
         background: #2BC7A2;
         transition: 0.5s;
       }
@@ -105,7 +107,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 6px;
-    margin-left: 145px;
+    margin-left: 185px;
     & label {
       min-width: 98px;
       height: 24px; 

@@ -117,7 +117,7 @@ const LoginSide = () => {
             <button>Sign In</button>
             <div className='login--side__form__sign__text'>
               <p>Don't have an account yet?</p>
-              <a href='/'>Create an account</a>
+              <a href='/register'>Create an account</a>
             </div>
           </div>
         </form>

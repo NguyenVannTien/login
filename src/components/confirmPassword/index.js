@@ -59,7 +59,7 @@ const ConfirmPassword = () => {
     axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/onboarding/signup', params, {headers})
     .then((res) => {
       console.log('confirmPwd', res);
-      // navigate('/register/success')
+      navigate('/register/success')
     })
 
     .catch(() => {
