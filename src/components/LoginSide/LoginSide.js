@@ -17,6 +17,7 @@ const LoginSide = () => {
   const [type, setType]= useState('password');
   const navigate = useNavigate();
   const [listCountry, setListCountry] = useState([]);
+  const [error, setError] = useState('')
 
 
   useEffect(() => {
@@ -59,8 +60,8 @@ const LoginSide = () => {
         handleLoginCheck();
       }
     })
-    .catch(() =>{
-      alert('loiiii!!!!')
+    .catch((res) =>{
+      setError(res.response.data.data.errors[0].message)
     })
   }
 
@@ -163,6 +164,10 @@ const LoginSide = () => {
             }
           </div>
           <span>Forgot Password?</span>
+          {
+            error.length > 0 &&
+            <p className='login--side__form__error'>{error}</p>
+          }
           <div className='login--side__form__sign'> 
             <button>Sign In</button>
             <div className='login--side__form__sign__text'>

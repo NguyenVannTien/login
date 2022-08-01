@@ -33,7 +33,7 @@ const RightRigister = () => {
       }
       getFetchApi();
       
-    } catch (error) {
+    } catch (res) {
       console.log("call api error");
     }
   }, [])
@@ -81,6 +81,7 @@ const RightRigister = () => {
           onChange={onChange}
           placeholder='Enter First Name' 
           type='text' 
+          required
         />
         <Input 
           name="lastName"
@@ -88,7 +89,8 @@ const RightRigister = () => {
           onChange={onChange}
           label="Last Name"  
           placeholder='Enter Last Name' 
-          type='text' 
+          type='text'
+          required
         />
         <Input
           name="emailAddress"
@@ -121,7 +123,8 @@ const RightRigister = () => {
                 type='text'
                 name="phoneNumber"
                 value={values.phoneNumber} 
-                onChange={onChange} 
+                onChange={onChange}
+                required
               /> 
             </div> 
           </>

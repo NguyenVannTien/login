@@ -21,8 +21,9 @@ const VerifyEmail = () => {
 
   const location = useLocation()
   const arrType = location.pathname.split('/')
-
   const navigate = useNavigate();
+
+  const [error, setError] =useState('')
 
   useEffect (() => {
     if(arrType[2] === 'confirm-phone'){
@@ -56,8 +57,8 @@ const VerifyEmail = () => {
         setCountDownOTP(res.data.data.countDown);
         setDataConfirm(res.data.data)
       })
-      .catch(() => {
-        console.log('loiiiii');
+      .catch((res) => {
+        setError(res.data.data.errors[0].message)
       })
       
     }
@@ -81,8 +82,8 @@ const VerifyEmail = () => {
       .then(() => {
         handleCheckParams();
       })
-      .catch(() => {
-        console.log('loiiiiii');
+      .catch((res) => {
+        setError(res.data.data.errors[0].message)
       })
 
     }
@@ -109,8 +110,8 @@ const VerifyEmail = () => {
         setCountDownOTP(res.data.data.countDown);
         setDataConfirm(res.data.data)
       })
-      .catch(() => {
-        console.log('loiiiiii');
+      .catch((res) => {
+        setError(res.data.data.errors[0].message)
       })
     }
 
@@ -133,8 +134,8 @@ const VerifyEmail = () => {
       .then((res) => {
         handleCheckParams();
       })
-      .catch(() => {
-        console.log('loiiiiii');
+      .catch((res) => {
+        setError(res.data.data.errors[0].message)
       })
 
     }
@@ -156,7 +157,7 @@ const VerifyEmail = () => {
       }else if(otp.length === 6 && arrType[1] === 'register'){
         navigate('/register/confirm-password')
       }else{
-        console.log('nhập đủ otp-6 kí tự');
+        setError('Nhập đủ otp-6 kí tự')
       }
     }
 
@@ -178,7 +179,7 @@ const VerifyEmail = () => {
         handleCountDownOtp();
       }
       else{
-        console.log("sau 30s mới được gửi mã mới");
+        setError("Sau 30s mới được gửi mã mới");
       }
             
     }
@@ -221,6 +222,7 @@ const VerifyEmail = () => {
             separator={<span style={{margin:'0 15px'}}></span>}
             
           />
+          <p className='register-email__description__error'>{error}</p>
           <button 
             className={
               otp.length === 6 ? 

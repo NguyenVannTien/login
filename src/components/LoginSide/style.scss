@@ -144,6 +144,13 @@
       line-height: 28px;
       margin-left: 350px;
     }
+    &__error{
+      text-align: center;
+      width: 70%;
+      margin: 0 !important;
+      margin-bottom: 10px !important;
+      color: red;
+    }
     &__rel{
       position: relative;
       &--show{

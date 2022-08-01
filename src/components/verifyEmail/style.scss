@@ -15,6 +15,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &__error{
+      color: red !important;
+      font-weight: 400 !important;
+      font-size: 20px !important;
+    }
     &__logo{
       line-height: 150px;
       text-align: center;

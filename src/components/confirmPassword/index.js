@@ -5,7 +5,6 @@ import LeftRegister from '../leftRegister';
 import { useNavigate } from 'react-router-dom';
 import'./style.scss'
 
-
 const ConfirmPassword = () => {
 
   const getDataRegister = JSON.parse(localStorage.getItem('dataRegister'));
@@ -16,7 +15,6 @@ const ConfirmPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [error, setError] = useState('');
-  console.log('error', error.length);
 
   const navigate = useNavigate();
 
@@ -26,13 +24,12 @@ const ConfirmPassword = () => {
       if(password !== confirmPassword){
         setError('Thông tin mật khẩu không khớp!')
       }else if(password === '' || confirmPassword === ''){
-        setError('Vui lòng nhập đầy đủ thông tin password !!')
+        setError('Vui lòng nhập đầy đủ thông tin tài khoản password')
       }else{
-        setError('')
         ConfirmPassword();
       }
     }else{
-      console.log('check loiiiiiii');
+      setError('Hãy chấp nhận thoản thuận của chúng tôi');
     }
   }
 
@@ -56,29 +53,24 @@ const ConfirmPassword = () => {
     }
 
     axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/onboarding/signup', params, {headers})
-    .then((res) => {
+    .then(() => {
       localStorage.clear();
       navigate('/register/success')
     })
-
-    .catch(() => {
-      console.log('loi confirm');
+    .catch((res) => {
+      setError(res.response.data.data.errors[0].message);
     })
   }
-
+  console.log('error', error);
 
   const handleChangeCheckEccept = (event) => {
     if (event.target.checked) {
       setIsSubscribed(true)
-      console.log('✅ Checkbox is checked');
     } else {
       setIsSubscribed(false)
-      console.log('⛔️ Checkbox is NOT checked');
     }
   };
  
-  
-
   return (
     <div className='register'>
       <LeftRegister />
