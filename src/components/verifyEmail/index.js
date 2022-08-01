@@ -152,8 +152,8 @@ const VerifyEmail = () => {
 
     const handleCheckParams = () => {
       if (otp.length === 6 && arrType[1] === 'login'){
-        localStorage.clear();
-        navigate('/')
+        // localStorage.clear();
+        navigate('/home')
       }else if(otp.length === 6 && arrType[1] === 'register'){
         navigate('/register/confirm-password')
       }else{

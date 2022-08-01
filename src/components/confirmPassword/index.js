@@ -61,7 +61,6 @@ const ConfirmPassword = () => {
       setError(res.response.data.data.errors[0].message);
     })
   }
-  console.log('error', error);
 
   const handleChangeCheckEccept = (event) => {
     if (event.target.checked) {

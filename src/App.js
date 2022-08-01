@@ -1,5 +1,6 @@
 
-import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import ConfirmPassword from './components/confirmPassword';
 import Success from './components/Success';
@@ -11,9 +12,18 @@ import Register from './pages/Register';
 
 
 function App() {
+
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(JSON.parse(localStorage.getItem('dataSignup'))){
+      navigate('/home')
+    }
+  }, [])
+
   return (
     <Routes>
-      <Route path='/' element={<Home />} /> 
+      <Route path='/home' element={<Home />} /> 
       <Route path='/login' element={<Login />}/>
       <Route path='/login/confirm-email' element={<VerifyEmail />} />
       <Route path='/login/confirm-phone' element={<VerifyPhone />} />
