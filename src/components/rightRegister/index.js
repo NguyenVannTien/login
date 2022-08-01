@@ -29,7 +29,6 @@ const RightRigister = () => {
           'ClientKey': 'CK_TestoPT9vqdI9h67B6n3YKxd',
         }
         const res = await axios.get('https://cadawada-api-dev.niw.com.vn/api/v1/country', {headers})
-        console.log(res.data.data);
         setListCountry(res.data.data)
       }
       getFetchApi();
@@ -58,8 +57,8 @@ const RightRigister = () => {
       ...values,
       countryCode: selectCountry
     }
-    localStorage.setItem('dataSignUp', JSON.stringify(data))
-    if(localStorage.getItem('dataSignUp')){
+    localStorage.setItem('dataRegister', JSON.stringify(data))
+    if(localStorage.getItem('dataRegister')){
       navigate('/register/confirm-email')
     }
   }

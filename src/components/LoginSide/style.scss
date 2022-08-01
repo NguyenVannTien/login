@@ -49,7 +49,7 @@
       justify-content: center;
       align-items: center;
       padding: 0px;
-      gap: 172px;
+      gap: 100px;
       width: 500px;
       height: 28px;
       & button{
@@ -59,18 +59,17 @@
       }
       &--email{
         text-align: center;
-        width: 25px;
+        min-width: 100px;
         height: 28px;
         font-family: 'Titillium Web';
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 28px;
         color: #8C8C8C;
       }
       &--phone{
         text-align: center;
-        width: 50px;
+        min-width: 100px;
         height: 28px;
         font-family: 'Titillium Web';
         font-style: normal;
@@ -87,6 +86,7 @@
       width: 400px;
       height: 4px;
       background: #F2F2F2;
+      margin: 0 auto;
       margin-bottom: 32px;
       &--active {
         height: 4px;

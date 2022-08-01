@@ -7,10 +7,12 @@ import './style.scss';
 
 
 const VerifyEmail = () => {
-  
-  const getDataSignUp = JSON.parse(localStorage.getItem('dataSignUp'))
+
+  const getDataSignUp = JSON.parse(localStorage.getItem('dataSignup'))
   const [dataSignUp, setDataSignUp] = useState(getDataSignUp || {})
   
+  const getDataRegister = JSON.parse(localStorage.getItem('dataRegister'))
+  const [dataRegister, setDataRegister] = useState(getDataRegister || {})
 
   const [otp, setOtp] = useState('')
   const [countDownOTP, setCountDownOTP] = useState('')
@@ -35,7 +37,6 @@ const VerifyEmail = () => {
   })
 
   const ConfirmEmail = async () => {
-    console.log('okokemail');
     const headers = { 
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -44,12 +45,10 @@ const VerifyEmail = () => {
     }
     const params = {
       emailAddress:
-        arrType[1] === 'register'
-        && dataSignUp?.emailAddress,
-        confirmationPurpose: 'onboarding',
-        firstName:
-        arrType[1] === 'register'
-        && dataSignUp?.firstName,
+        arrType[1] === 'register' ? dataRegister?.emailAddress : dataSignUp.account.emailAddress,
+      confirmationPurpose: 'onboarding',
+      firstName:
+        arrType[1] === 'register'? dataRegister?.firstName : dataSignUp.user.firstName,
     }
       
       axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/settings/confirm-email', params, {headers})
@@ -74,17 +73,13 @@ const VerifyEmail = () => {
       const params = {
         verificationReference: dataConfirm?.verificationReference,
         otpCode: otp,
-        userIdentity:dataSignUp?.emailAddress,
+        userIdentity:dataRegister?.emailAddress,
       }
 
       axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/settings/verify-email', params , {headers})
 
-      .then((res) => {
-        if(otp.length === 6){
-          navigate('/register/confirm-phone')
-        }else{
-          console.log('nhập đủ otp-6 kí tự');
-        }
+      .then(() => {
+        handleCheckParams();
       })
       .catch(() => {
         console.log('loiiiiii');
@@ -102,12 +97,10 @@ const VerifyEmail = () => {
       }
       const params = {
         phoneNumber:
-          arrType[1] === 'register'
-          && dataSignUp?.phoneNumber,
+         arrType[1] === 'register' ? dataRegister?.phoneNumber : dataSignUp.account.phoneNumber,
         confirmationPurpose: 'onboarding',
         diallingCode: 
-          arrType[1] === 'register'
-          && dataSignUp?.countryCode[0].diallingCode
+          arrType[1] === 'register' ? dataRegister?.countryCode[0].diallingCode : dataSignUp.country.diallingCode
       }
 
       axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/settings/confirm-phonenumber', params , {headers})
@@ -132,19 +125,13 @@ const VerifyEmail = () => {
       const params = {
         verificationReference: dataConfirm?.verificationReference,
         otpCode: otp,
-        userIdentity:dataSignUp?.phoneNumber,
+        userIdentity:dataRegister?.phoneNumber,
       }
 
       axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/settings/verify-phonenumber', params , {headers})
 
       .then((res) => {
-        console.log('verifyphone  ',res);
-        if(otp.length === 6){
-          navigate('/register/confirm-password')
-        }else{
-          console.log('nhập đủ otp-6 kí tự');
-        }
-
+        handleCheckParams();
       })
       .catch(() => {
         console.log('loiiiiii');
@@ -155,10 +142,21 @@ const VerifyEmail = () => {
     const handleClickProcess = () => {
 
       if(arrType[2] === 'confirm-email'){
-         VerifyEmail();
+        VerifyEmail();
       }
       if(arrType[2] ==='confirm-phone'){
         VerifyPhone();
+      }
+    }
+
+    const handleCheckParams = () => {
+      if (otp.length === 6 && arrType[1] === 'login'){
+        localStorage.clear();
+        navigate('/')
+      }else if(otp.length === 6 && arrType[1] === 'register'){
+        navigate('/register/confirm-password')
+      }else{
+        console.log('nhập đủ otp-6 kí tự');
       }
     }
 
@@ -203,7 +201,7 @@ const VerifyEmail = () => {
               <i class="logo__icon fa-solid fa-mobile-screen-button"></i>
               </div>
               <h3>Verify your Phone Number</h3>
-              <p>Enter the 6-digits OTP sent to your phone number <br/> <span>+{dataSignUp.phoneNumber}</span></p>
+              <p>Enter the 6-digits OTP sent to your phone number <br/> <span>+{dataRegister.phoneNumber} {dataSignUp.account.phoneNumber}</span></p>
             </>
           } 
           <OtpInput
@@ -225,7 +223,7 @@ const VerifyEmail = () => {
           />
           <button 
             className={
-              otp ? 
+              otp.length === 6 ? 
               'register-email__description__proceed active--otp' : 
               'register-email__description__proceed'
             }

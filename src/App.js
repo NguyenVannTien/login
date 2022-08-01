@@ -13,11 +13,13 @@ import Register from './pages/Register';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
+      <Route path='/' element={<Home />} /> 
+      <Route path='/login' element={<Login />}/>
+      <Route path='/login/confirm-email' element={<VerifyEmail />} />
+      <Route path='/login/confirm-phone' element={<VerifyPhone />} />
       <Route path='/register' element={<Register />}/>
-      <Route path='/register/confirm-email' element={< VerifyEmail />} />
-      <Route path='/register/confirm-phone' element={< VerifyPhone />} />
+      <Route path='/register/confirm-email' element={<VerifyEmail />} />
+      <Route path='/register/confirm-phone' element={<VerifyPhone />} />
       <Route path='/register/confirm-password' element={<ConfirmPassword />} />
       <Route path='/register/success' element = {<Success />} />
     </Routes>

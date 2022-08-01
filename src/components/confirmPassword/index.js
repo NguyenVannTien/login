@@ -8,14 +8,14 @@ import'./style.scss'
 
 const ConfirmPassword = () => {
 
-  const getDataSignUp = JSON.parse(localStorage.getItem('dataSignUp'))
-  const [dataSignUp, setDataSignUp] = useState(getDataSignUp || {})
+  const getDataRegister = JSON.parse(localStorage.getItem('dataRegister'));
+  const [dataRegister, setDataRegister] = useState(getDataRegister || {});
 
   const [type, setType] = useState('password');
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [password, setPassword] = useState('');;
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
   console.log('error', error.length);
 
   const navigate = useNavigate();
@@ -28,7 +28,6 @@ const ConfirmPassword = () => {
       }else if(password === '' || confirmPassword === ''){
         setError('Vui lòng nhập đầy đủ thông tin password !!')
       }else{
-        console.log('okookkoko');
         setError('')
         ConfirmPassword();
       }
@@ -46,11 +45,11 @@ const ConfirmPassword = () => {
     }
 
     const params = {
-      phoneNumber: dataSignUp?.phoneNumber,
-      emailAddress: dataSignUp?.emailAddress,
-      firstName:dataSignUp?.firstName,
-      lastName: dataSignUp?.lastName,
-      countryCode:dataSignUp?.countryCode[0].shortCode,
+      phoneNumber: dataRegister?.phoneNumber,
+      emailAddress: dataRegister?.emailAddress,
+      firstName:dataRegister?.firstName,
+      lastName: dataRegister?.lastName,
+      countryCode:dataRegister?.countryCode[0].shortCode,
       businessName:'onboarding',
       accountType: 'Personal',
       password: password,
@@ -58,7 +57,7 @@ const ConfirmPassword = () => {
 
     axios.post('https://cadawada-api-dev.niw.com.vn/api/v1/onboarding/signup', params, {headers})
     .then((res) => {
-      console.log('confirmPwd', res);
+      localStorage.clear();
       navigate('/register/success')
     })
 
