@@ -52,7 +52,6 @@ const RightRigister = () => {
 
   const handleSaveForm = (e) => {
     e.preventDefault();
-    console.log(selectCountry[0].shortCode);
     const data = {
       ...values,
       countryCode: selectCountry
